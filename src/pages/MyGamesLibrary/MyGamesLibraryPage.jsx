@@ -187,6 +187,10 @@ const LibraryPage = () => {
   return (
     <Fragment>
       <h1>My library</h1>
+      <img
+        src="../../../images/controllerLibrary2.jpg"
+        style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
+      />
       <div className="row align-games-center">
         <div className="col-sm-4">
           <p className="p2">search by name :</p>
@@ -221,7 +225,7 @@ const LibraryPage = () => {
         </div>
 
         <div className="col-sm-4">
-          <p>search by category :</p>
+          <p className="p3">search by category :</p>
 
           <select
             className="form-select"

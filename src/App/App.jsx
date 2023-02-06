@@ -1,6 +1,6 @@
 //*    imports
-import React, { lazy, Suspense } from "react";
-import { useEffect } from "react";
+// import React, { lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import { ToastContainer } from "react-toastify";
 import jwt_decode from "jwt-decode";
@@ -54,8 +54,10 @@ function rain() {
 //* then we erote a function to delete the token
 function App() {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     rain();
+    setIsLoading(true);
     if (localStorage.getItem("token")) {
       (async () => {
         try {
@@ -65,50 +67,66 @@ function App() {
           if (data) {
             dispatch(authActions.updateUserInfo(data.user));
           }
+          setIsLoading(false);
         } catch (err) {
           localStorage.removeItem("token");
+          setIsLoading(false);
         }
       })();
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
   //* here we used react-router-dom to add the switch class so we can switch between the pages without uncimment some different route.
   //* then we use routes and pathes for the pages/components.
-  return (
-    <div>
-      <div className="container" id="container">
-        <div id="rain"></div>
 
-        <ToastContainer />
-        <NavbarComponent />
-        <Switch>
-          {/* <Suspense
-            fallback={
-              <div class="spinner-grow text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            }
-          > */}
-          <Route path="/" exact component={HomePage}></Route>
-          <Route path="/login" component={LoginPage}></Route>
-          <Route path="/register" component={RegisterPage}></Route>
-          <Route path="/HomePage" component={HomePage}></Route>
-          <Route path="/moreinfo/:id" component={MoreInfoGameCardPage}></Route>
-          <Route path="/creategamecard" component={CreateGameCardPage}></Route>
-          <Route path="/storepage" component={GameStorePage}></Route>
-          <AuthGuardRoute
-            path="/editgamecard/:id"
-            component={EditGameCardPage}
-          ></AuthGuardRoute>
-          <Route path="/aboutus" component={AboutUsPage}></Route>
-          <Route path="/librarypage" component={MyGamesLibraryPage}></Route>
-          <Route path="*" component={PageNotFound}></Route>
-          {/* </Suspense> */}
-        </Switch>
+  {
+    /* <div className="container" id="container">
+    <div id="rain"></div> */
+  }
+  if (isLoading) {
+    return (
+      <div class="spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div className="container" id="container">
+          <div id="rain"></div>
+
+          <ToastContainer />
+          <NavbarComponent />
+          <Switch>
+            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/login" component={LoginPage}></Route>
+            <Route path="/register" component={RegisterPage}></Route>
+            <Route path="/HomePage" component={HomePage}></Route>
+            <Route
+              path="/moreinfo/:id"
+              component={MoreInfoGameCardPage}
+            ></Route>
+            <Route
+              path="/creategamecard"
+              component={CreateGameCardPage}
+            ></Route>
+            <Route path="/storepage" component={GameStorePage}></Route>
+            <AuthGuardRoute
+              path="/editgamecard/:id"
+              component={EditGameCardPage}
+            ></AuthGuardRoute>
+            <Route path="/aboutus" component={AboutUsPage}></Route>
+            <Route path="/librarypage" component={MyGamesLibraryPage}></Route>
+            <Route path="*" component={PageNotFound}></Route>
+          </Switch>
+
+          <Footer />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

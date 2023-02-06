@@ -4,6 +4,8 @@ import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authActions } from "store/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import "../../components/navbar/NavBarComponent.scss";
 
 let links = [
@@ -79,19 +81,16 @@ const NavbarComponent = () => {
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          GameStore <FontAwesomeIcon icon={faGamepad} />
         </a>
-        {/* <img
-          src="../../../images/controllerimg2.jpg"
-          style={{ aspectRatio: " / 1", objectFit: "cover" }}
-        ></img> */}
+
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
-          aria-expanded="false"
+          // aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>

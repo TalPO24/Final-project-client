@@ -1,71 +1,71 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap");
 :root {
-    --screen-height: 100vh;
+  --screen-height: 100vh;
 }
 
 .form-floating {
-    padding-bottom: 3rem;
-    font-family: "Poppins", sans-serif;
+  padding-bottom: 3rem;
+  font-family: "Poppins", sans-serif;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // background-color: #111111;
-    // overflow: hidden;
-    min-height: 100vh;
-    // background: #252839;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: #111111;
+  // overflow: hidden;
+  min-height: 100vh;
+  // background: #252839;
 }
 
 h3 {
-    text-align: center;
-    padding-top: 4rem;
-    color: #01fe87;
+  text-align: center;
+  padding-top: 4rem;
+  color: #01fe87;
 }
 
 .imgController {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 h1 {
-    padding-top: 3rem;
-    text-align: center;
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 2rem;
+  padding-top: 3rem;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 2rem;
 }
 
 .title-wrapper {
-    position: relative;
+  position: relative;
 }
 
 h2 {
-    font-size: 14vw;
-    color: #252839;
-    // -webkit-text-stroke: 0.3vw #383d52;
-    text-transform: uppercase;
-    display: inline-block;
-    color: #01fe87;
-    -webkit-text-stroke: 0vw #383d52;
-    padding-top: 5rem;
+  font-size: 14vw;
+  color: #252839;
+  // -webkit-text-stroke: 0.3vw #383d52;
+  text-transform: uppercase;
+  display: inline-block;
+  color: #01fe87;
+  -webkit-text-stroke: 0vw #383d52;
+  padding-top: 5rem;
 }
 
 .overlay {
-    position: absolute;
-    top: 50%;
-    right: -10%;
-    height: 60%;
-    width: 100%;
-    border-left: 2px solid #01fe87;
-    background-color: #111111;
-    animation: animate 8s linear infinite;
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  height: 60%;
+  width: 100%;
+  border-left: 2px solid #01fe87;
+  background-color: #111111;
+  animation: animate 8s linear infinite;
 }
 
 // h2::before {
@@ -83,65 +83,67 @@ h2 {
 //     display: inline-block;
 // }
 @keyframes animate {
-    0%,
-    10%,
-    100% {
-        width: 110%;
-    }
-    70%,
-    90% {
-        width: 0%;
-    }
+  0%,
+  10%,
+  100% {
+    width: 110%;
+  }
+  70%,
+  90% {
+    width: 0%;
+  }
 }
 
 .card-img-top {
-    width: 17rem;
-    height: 17rem;
+  width: 17rem;
+  height: 17rem;
 }
 
 .img-fluid {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .carousel-inner {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 .carousel-item {
-    padding-bottom: 5rem;
+  padding-bottom: 5rem;
 }
 
 //*our store btn
 .button1 {
-    position: relative;
-    background: #fff;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
-    font-weight: 400;
-    padding: 10px 30px;
-    transition: 0.5s;
-    margin-left: 32rem;
-    border-radius: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  padding: 10px 30px;
+  transition: 0.5s;
+  border-radius: 2px;
 }
 
 .button1:hover {
-    background: #01fe87;
-    color: #01fe87;
-    box-shadow: 0 0 35px #01fe87;
+  background: #01fe87;
+  color: #01fe87;
+  box-shadow: 0 0 35px #01fe87;
 }
 
 .button1::before {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    background: #111;
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #111;
 }
 
 .button1 span {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }

@@ -79,36 +79,44 @@ const GameCardComponent = ({
           style={{ aspectRatio: "4 / 3", objectFit: "cover" }}
         />
         <div className="card-body">
-          <p className="card-text">Name: {name}</p>
-          <p className="card-text">Description: {description}</p>
-          <p className="card-text">Price: {price}$</p>
-          <p className="card-text">Release Date: {releaseDate}</p>
+          <p className="card-text">
+            Name: <span>{name}</span>
+          </p>
+          <p className="card-text">
+            Description: <span>{description}</span>
+          </p>
+          <p className="card-text">
+            Price: <span>{price}$</span>
+          </p>
+          <p className="card-text">
+            Release Date: <span>{releaseDate}</span>
+          </p>
         </div>
         <div className="card-body">
           {userInfo.isAdmin ? ( // if the user is admin then display this buttons
             <Fragment>
               <button
                 type="button"
-                className="btn btn-outline-dark"
-                onClick={handleDeleteBtnClick}
+                className="btn btn-outline-light ms-1"
+                onClick={handleFavGameClick(id)}
               >
-                <FontAwesomeIcon icon={faTrashCan} />
-                Delete
+                add
+                <FontAwesomeIcon icon={faBookmark} />
               </button>
 
               <Link to={`/editgamecard/${id}`} className="btn btn-outline-dark">
-                <FontAwesomeIcon icon={faPenToSquare} />
                 Edit
+                <FontAwesomeIcon icon={faPenToSquare} />
               </Link>
 
               {pathname == "/storepage" ? (
                 <button
                   type="button"
-                  className="btn btn-outline-light ms-1"
-                  onClick={handleFavGameClick(id)}
+                  className="btn btn-outline-dark"
+                  onClick={handleDeleteBtnClick}
                 >
-                  add to library
-                  <FontAwesomeIcon icon={faBookmark} />
+                  Delete
+                  <FontAwesomeIcon icon={faTrashCan} />
                 </button>
               ) : (
                 ""
@@ -150,6 +158,7 @@ const GameCardComponent = ({
                 data-bs-target={`#f${index}`}
               >
                 more info
+                <FontAwesomeIcon icon={faBookmark} />
               </button>
               <div
                 className="modal fade"
@@ -175,7 +184,7 @@ const GameCardComponent = ({
                       <p className="card-text text-dark">
                         Description: {description}
                       </p>
-                      <p className="card-text text-dark">Price: {price}</p>
+                      <p className="card-text text-dark">Price: {price}$</p>
                       <p className="card-text text-dark">
                         Release Date: {releaseDate}
                       </p>
@@ -196,7 +205,7 @@ const GameCardComponent = ({
               {pathname == "/librarypage" ? (
                 <button
                   type="button"
-                  className="btn btn-danger ms-1"
+                  className="btn btn-outline-light ms-1"
                   onClick={onDelete}
                 >
                   remove
@@ -208,7 +217,7 @@ const GameCardComponent = ({
                   className="btn btn-outline-light ms-1"
                   onClick={handleFavGameClick(id)}
                 >
-                  add to library
+                  add library
                   <FontAwesomeIcon icon={faBookmark} />
                 </button>
               )}

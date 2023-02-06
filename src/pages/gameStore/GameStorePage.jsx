@@ -183,9 +183,13 @@ const GameStorePage = () => {
   return (
     <Fragment>
       <h1>welcome to our store</h1>
+      <img
+        src="../../../images/controllerImage.jpg"
+        style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
+      />
       <div className="row align-items-center">
         <div className="col-sm-4">
-          <p2>search by name :</p2>
+          <p className="p2">search by name :</p>
 
           <input
             type="text"
@@ -198,7 +202,7 @@ const GameStorePage = () => {
           />
         </div>
         <div className="col-sm-4">
-          <p4>sort by price :</p4>
+          <p className="p4">sort by price :</p>
           <div className="sort">
             <button
               type="button"
@@ -218,7 +222,7 @@ const GameStorePage = () => {
         </div>
 
         <div className="col-sm-4">
-          <p3>search by category :</p3>
+          <p className="p3">search by category :</p>
           <select
             className="form-select"
             aria-label="Default select example"
