@@ -97,16 +97,16 @@ const GameCardComponent = ({
             <Fragment>
               <button
                 type="button"
-                className="btn btn-outline-light ms-1"
+                className="btn btn-outline-dark ms-1"
                 onClick={handleFavGameClick(id)}
               >
                 add
-                <FontAwesomeIcon icon={faBookmark} />
+                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
               </button>
 
               <Link to={`/editgamecard/${id}`} className="btn btn-outline-dark">
                 Edit
-                <FontAwesomeIcon icon={faPenToSquare} />
+                <FontAwesomeIcon className="FontIcon" icon={faPenToSquare} />
               </Link>
 
               {pathname == "/storepage" ? (
@@ -116,7 +116,7 @@ const GameCardComponent = ({
                   onClick={handleDeleteBtnClick}
                 >
                   Delete
-                  <FontAwesomeIcon icon={faTrashCan} />
+                  <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
               ) : (
                 ""
@@ -143,7 +143,7 @@ const GameCardComponent = ({
                   }}
                 >
                   remove
-                  <FontAwesomeIcon icon={faTrashCan} />
+                  <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
               ) : (
                 ""
@@ -158,7 +158,7 @@ const GameCardComponent = ({
                 data-bs-target={`#f${index}`}
               >
                 more info
-                <FontAwesomeIcon icon={faBookmark} />
+                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
               </button>
               <div
                 className="modal fade"
@@ -209,7 +209,7 @@ const GameCardComponent = ({
                   onClick={onDelete}
                 >
                   remove
-                  <FontAwesomeIcon icon={faTrashCan} />
+                  <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
               ) : (
                 <button
@@ -218,7 +218,7 @@ const GameCardComponent = ({
                   onClick={handleFavGameClick(id)}
                 >
                   add library
-                  <FontAwesomeIcon icon={faBookmark} />
+                  <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
                 </button>
               )}
             </Fragment>

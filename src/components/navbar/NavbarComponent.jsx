@@ -53,7 +53,7 @@ let authLinks = {
 
 let adminLinks = [
   {
-    label: "Create game card",
+    label: "Create card",
     url: "/creategamecard",
   },
 ];
@@ -78,74 +78,76 @@ const NavbarComponent = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          GameStore <FontAwesomeIcon icon={faGamepad} />
-        </a>
+    <div className="component">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            GameStore <FontAwesomeIcon icon={faGamepad} />
+          </a>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          // aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            {links.map((item, idx) => (
-              <NavBarLinkPartial
-                key={"navlinks" + idx}
-                label={item.label}
-                link={item.url}
-              />
-            ))}
-
-            {dataFromToken?.isAdmin &&
-              adminLinks.map((item, idx) => (
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            // aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              {links.map((item, idx) => (
                 <NavBarLinkPartial
-                  key={"adminnavlinks" + idx}
+                  key={"navlinks" + idx}
                   label={item.label}
                   link={item.url}
                 />
               ))}
-          </ul>
+
+              {dataFromToken?.isAdmin &&
+                adminLinks.map((item, idx) => (
+                  <NavBarLinkPartial
+                    key={"adminnavlinks" + idx}
+                    label={item.label}
+                    link={item.url}
+                  />
+                ))}
+            </ul>
+          </div>
+          <form className="d-flex" role={"search"}>
+            {loggedIn ? (
+              <Fragment>
+                <button type="button" className="btn btn-outline-light">
+                  {"You logged In"}
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-light"
+                  onClick={handleLogoutBtnClick}
+                >
+                  {"Logout"}
+                </button>
+              </Fragment>
+            ) : (
+              authLinks.isLoggedOut.map((item, idx) => (
+                <button
+                  type="button"
+                  className="btn btn-outline-light"
+                  key={"loggedOut" + idx}
+                  onClick={() => {
+                    history.push(item.url);
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))
+            )}
+          </form>
         </div>
-        <form className="d-flex" role={"search"}>
-          {loggedIn ? (
-            <Fragment>
-              <button type="button" className="btn btn-outline-light">
-                {"You logged In"}
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-light"
-                onClick={handleLogoutBtnClick}
-              >
-                {"Logout"}
-              </button>
-            </Fragment>
-          ) : (
-            authLinks.isLoggedOut.map((item, idx) => (
-              <button
-                type="button"
-                className="btn btn-outline-light"
-                key={"loggedOut" + idx}
-                onClick={() => {
-                  history.push(item.url);
-                }}
-              >
-                {item.label}
-              </button>
-            ))
-          )}
-        </form>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

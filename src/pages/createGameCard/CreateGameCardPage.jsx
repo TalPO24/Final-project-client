@@ -93,7 +93,7 @@ const CreateGameCardPage = () => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <h1>Create your business card</h1>
+      <h1>Create your game card</h1>
       <div className="mb-1">
         <label htmlFor="gameNameInput" className="form-label">
           Game Name
