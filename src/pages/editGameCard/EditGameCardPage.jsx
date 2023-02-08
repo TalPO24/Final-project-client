@@ -79,26 +79,26 @@ const EditGameCardPage = () => {
     try {
       let { data } = await axios.patch(`/games/${id}`, gameCardData);
 
-      toast.success("you have successfuly edited the card", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
+      toast("you have successfuly edited the card", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
       });
     } catch (error) {
       toast.error("somthing went wrong", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
       });
     }
   };

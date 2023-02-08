@@ -65,19 +65,19 @@ const CreateGameCardPage = () => {
       });
       toast("you have successfuly created a new game card 😀", {
         position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
       });
     } catch (err) {
       toast.error("somthing went wrong 😓", {
         position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,

@@ -165,13 +165,31 @@ const GameStorePage = () => {
   const handleGameCardDelete = async (id) => {
     try {
       const data = await axios.delete(`/games/${id}`);
-
       initialGamesCardsArray = initialGamesCardsArray.filter(
         (item) => item._id !== id
       );
       setGameCardArr(initialGamesCardsArray);
+      toast("you deleted the game card", {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
     } catch (error) {
-      console.log(error);
+      toast("somthing went wrong", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
     }
   };
 

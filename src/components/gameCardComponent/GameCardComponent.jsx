@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { authActions } from "store/auth";
+import { toast } from "react-toastify";
 
 import "../../components/gameCardComponent/GameCardComponent.scss";
 import { icons } from "react-icons";
@@ -41,13 +42,10 @@ const GameCardComponent = ({
     try {
       const wishListArr = userInfo.wishList.map((product) => product._id);
       wishListArr.push(productId);
-      console.log(wishListArr);
       let { data } = await axios.patch(`/user/${userInfo.id}`, {
         wishList: wishListArr,
       });
       localStorage.setItem("token", data);
-      console.log(data);
-
       dispatch(
         authActions.addToWishList({
           gameDescription: description,
@@ -59,8 +57,27 @@ const GameCardComponent = ({
           _id: productId,
         })
       );
+      toast("Added to library", {
+        position: "bottom-center",
+        autoClose: 500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
     } catch (err) {
-      console.log(err);
+      toast("somthing went wring", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
     }
     // const heartIcon = document.querySelector(".heart-icon");
 

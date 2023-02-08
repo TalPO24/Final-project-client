@@ -101,14 +101,14 @@ const LoginPage = () => {
       localStorage.setItem("token", res.data.token);
       dispatch(authActions.login(jwt_decode(res.data.token)));
       //*redirect to panelPage
-      toast.success("you logged in!", {
+      toast("you logged in!", {
         position: "bottom-center",
-        autoClose: 3000,
-        hideProgressBar: false,
+        autoClose: 1000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
+        progress: false,
         theme: "dark",
       });
     });

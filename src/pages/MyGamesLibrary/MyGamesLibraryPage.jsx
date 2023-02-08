@@ -159,22 +159,29 @@ const LibraryPage = () => {
       const { data } = await axios.patch(`/user/${userInfo.id}`, {
         wishList: newArr,
       });
-      console.log(newArr);
       localStorage.setItem("token", data);
-
       dispatch(authActions.removeFromWishList(newArr));
       setGameCardArr(newArr);
+      toast("you removed the card", {
+        position: "bottom-center",
+        autoClose: 500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
     } catch (error) {
-      console.log(error);
       toast.error(" somthing went wrong", {
         position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
+        autoClose: 3000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
       });
     }
   };

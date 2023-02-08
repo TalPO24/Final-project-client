@@ -20,9 +20,9 @@ import store from "./store/index";
 import { BrowserRouter } from "react-router-dom";
 
 //* config axios */
-axios.defaults.baseURL = `http://10.0.0.8:3030/api`;
-
-axios.interceptors.request.use((config) => {
+axios.defaults.baseURL = `/api`;
+// 10.0.0.8:3030
+http: axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     //* the token exists in local storage,the user logged in.

@@ -200,6 +200,9 @@ const HomePage = () => {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
+        {/* <Link to={"/register"} className="button1">
+          <span>REGISTER NOW FOR FREE</span>
+        </Link> */}
       </div>
     </Fragment>
   );
