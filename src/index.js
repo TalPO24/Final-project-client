@@ -20,28 +20,25 @@ import store from "./store/index";
 import { BrowserRouter } from "react-router-dom";
 
 //* config axios */
-axios.defaults.baseURL = `/api`;
+axios.defaults.baseURL = `http://localhost:3030/api`;
 
 axios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-        //* the token exists in local storage,the user logged in.
-        //* if the token exists then we will add it to header of the request
-        config.headers["token"] = token;
-    }
-    return config;
+  const token = localStorage.getItem("token");
+  if (token) {
+    //* the token exists in local storage,the user logged in.
+    //* if the token exists then we will add it to header of the request
+    config.headers["token"] = token;
+  }
+  return config;
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render( <
-    Provider store = { store } >
-    <
-    BrowserRouter >
-    <
-    App / >
-    <
-    /BrowserRouter>{" "} <
-    /Provider>
+root.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>{" "}
+  </Provider>
 );
 
 reportWebVitals();

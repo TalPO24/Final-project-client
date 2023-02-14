@@ -88,7 +88,7 @@ const CreateGameCardPage = () => {
   };
 
   useEffect(() => {
-    console.log(gameCardInput);
+    // console.log(gameCardInput);
   }, [gameCardInput]);
 
   return (

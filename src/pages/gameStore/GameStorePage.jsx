@@ -29,9 +29,7 @@ const GameStorePage = () => {
         let { data } = await axios.get("/games/");
         initialGamesCardsArray = data.allGamecards;
         setGameCardArr(initialGamesCardsArray);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     })();
   }, []);
 
@@ -195,14 +193,14 @@ const GameStorePage = () => {
 
   //* The useEffect logs the gameCardArr state to the console, and it will be re-run every time the GameCardComponent changes.
   useEffect(() => {
-    console.log(gameCardArr);
+    // console.log(gameCardArr);
   }, [GameCardComponent]);
 
   return (
     <Fragment>
       <h1>welcome to our store</h1>
       <img
-        src="../../../images/controllerImage.jpg"
+        src="../../../images/controller-storepage.jpg"
         style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
       />
       <div className="row align-items-center">

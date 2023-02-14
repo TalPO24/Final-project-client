@@ -2,20 +2,6 @@ import { Fragment } from "react";
 import "./FooterComponent.scss";
 import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 
-{
-  /* <div className="hr">
-  <hr />
-</div>
-<div className="card-body">
-  <blockquote className="blockquote">
-    <footer className="blockquote-footer">
-      copyright© 2022. Tal poris All Rights Reserved
-    </footer>
-  </blockquote>
-</div> */
-}
-
-//* this function is a simple one we just add the footer code from bootstrap.
 const Footer = () => {
   return (
     <Fragment>
@@ -47,7 +33,11 @@ const Footer = () => {
         </div>
         <div className="footer-bottom">
           <p> Copyright© 2023. Tal Poris All Rights Reserved </p>
-          <span>E-Mail - talpor212@gmail.com</span>
+
+          <span>
+            To get in touch, you can send an email to the address -
+            talpor212@gmail.com
+          </span>
         </div>
       </footer>
     </Fragment>

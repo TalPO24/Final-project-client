@@ -96,7 +96,7 @@ const RegisterPage = () => {
   };
 
   useEffect(() => {
-    console.log(userInputErrors);
+    // console.log(userInputErrors);
   }, [userInputErrors]);
 
   return (

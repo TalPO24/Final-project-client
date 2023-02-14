@@ -81,14 +81,10 @@ function App() {
   //* here we used react-router-dom to add the switch class so we can switch between the pages without uncimment some different route.
   //* then we use routes and pathes for the pages/components.
 
-  {
-    /* <div className="container" id="container">
-    <div id="rain"></div> */
-  }
   if (isLoading) {
     return (
-      <div class="spinner-grow text-danger" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <div className="spinner-grow text-danger" role="status">
+        <span className="visually-hidden">Loading...</span>
       </div>
     );
   } else {

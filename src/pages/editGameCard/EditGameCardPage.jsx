@@ -34,7 +34,7 @@ const EditGameCardPage = () => {
           gameCategory: data.gameCategory,
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     })();
   }, []);
@@ -65,7 +65,7 @@ const EditGameCardPage = () => {
   };
   //* This useEffect hook will log the current state of gameCardData to the console whenever it updates.
   useEffect(() => {
-    console.log(gameCardData);
+    // console.log(gameCardData);
   }, [gameCardData]);
 
   //* The handleFormSubmit function is an asynchronous function that is triggered when the form is submitted.

@@ -188,16 +188,17 @@ const LibraryPage = () => {
 
   //* The useEffect logs the gameCardArr state to the console, and it will be re-run every time the GameCardComponent changes.
   useEffect(() => {
-    console.log(gameCardArr);
+    // console.log(gameCardArr);
   }, [GameCardComponent]);
 
   return (
     <Fragment>
       <h1>My library</h1>
       <img
-        src="../../../images/controllerLibrary2.jpg"
+        src="../../../images/controller-librarypage.jpg"
         style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
       />
+
       <div className="row align-games-center">
         <div className="col-sm-4">
           <p className="p2">search by name :</p>

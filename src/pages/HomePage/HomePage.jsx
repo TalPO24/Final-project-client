@@ -120,7 +120,7 @@ const HomePage = () => {
       <Link to={"/storepage"} className="button1">
         <span>check our store</span>
       </Link>
-      {/* <hr></hr> */}
+
       <img
         className="imgController"
         src="../../../images/pacman.jpg"

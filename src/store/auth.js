@@ -26,7 +26,6 @@ const authSlice = createSlice({
     logout: (state) => initialAuthState,
     updateUserInfo(state, action) {
       state.userInfo = action.payload;
-      console.log(action.payload);
     },
     addToWishList(state, { payload }) {
       state.userInfo.wishList.push(payload);

@@ -4,7 +4,7 @@ import "../aboutUsPage/AboutusPage.scss";
 const AboutUsPage = () => {
   return (
     <Fragment>
-      <h1>About Us</h1>
+      <h1> A little bit about me and the site</h1>
       <div className="container">
         <div className="row">
           <div className="col-md-4">
@@ -35,7 +35,7 @@ const AboutUsPage = () => {
               <div className="service">
                 <div className="service-logo">
                   <img
-                    src="../../../images/profile.webp"
+                    src="../../../images/about-us-profile.png"
                     alt="logo"
                     style={{ aspectRatio: "2 / 1", objectFit: "cover" }}
                   />
@@ -44,7 +44,8 @@ const AboutUsPage = () => {
                 <p>
                   Dedicated and efficient full stack developer Seeking to
                   further improve my skills as a future developer. can adapt
-                  quickly and learn new things.
+                  quickly and learn new things. Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Eveniet, commodi.
                 </p>
               </div>
               <div className="shadow1"></div>

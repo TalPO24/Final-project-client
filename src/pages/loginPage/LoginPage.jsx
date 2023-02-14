@@ -129,7 +129,7 @@ const LoginPage = () => {
         password: userInput.password,
       })
       .then((res) => {
-        console.log("res", res);
+        // console.log("res", res);
       })
       .catch((err) => {
         let newUserInputErrors = {
@@ -148,7 +148,7 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    console.log(userInputErrors);
+    // console.log(userInputErrors);
   }, [userInputErrors]);
 
   return (

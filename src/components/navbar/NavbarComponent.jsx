@@ -69,7 +69,7 @@ const NavbarComponent = () => {
   const dataFromToken = useSelector((state) => state.auth.userInfo);
   const userInfo = useSelector((state) => state.auth.userInfo);
 
-  //* this function handels the logout btn so when the user is logged out the it we clear the token from the local storage.
+  //* this function handels the logout btn so when the user is logged out then it will clear the token from the local storage.
   //* then when the user is logged out then the function of (history.push) transfer the user to the login page.
   const handleLogoutBtnClick = () => {
     localStorage.clear();
@@ -91,13 +91,15 @@ const NavbarComponent = () => {
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown"
-            // aria-expanded="false"
+            aria-expanded="false"
             aria-label="Toggle navigation"
+            style={{ backgroundColor: "#01fe87" }}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav m-0">
               {links.map((item, idx) => (
                 <NavBarLinkPartial
                   key={"navlinks" + idx}

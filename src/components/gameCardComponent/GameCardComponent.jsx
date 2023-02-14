@@ -13,9 +13,7 @@ import axios from "axios";
 import { useState } from "react";
 import { authActions } from "store/auth";
 import { toast } from "react-toastify";
-
 import "../../components/gameCardComponent/GameCardComponent.scss";
-import { icons } from "react-icons";
 
 //*  instead of props we used here object destructuring for the father child communication
 const GameCardComponent = ({
@@ -79,11 +77,6 @@ const GameCardComponent = ({
         theme: "dark",
       });
     }
-    // const heartIcon = document.querySelector(".heart-icon");
-
-    // heartIcon.addEventListener("click", (e) => {
-    //   heartIcon.classList.toggle("liked");
-    // });
   };
 
   return (
@@ -93,43 +86,46 @@ const GameCardComponent = ({
           src={img}
           className="card-img-top h-auto"
           alt={name}
-          style={{ aspectRatio: "4 / 3", objectFit: "cover" }}
+          style={{ aspectRatio: "3 / 3", objectFit: "cover" }}
         />
         <div className="card-body">
-          <p className="card-text">
+          <p className="card-text ms-4 mb-3">
             Name: <span>{name}</span>
           </p>
-          <p className="card-text">
+          <p className="card-text ms-4 mb-3">
             Description: <span>{description}</span>
           </p>
-          <p className="card-text">
+          <p className="card-text ms-4 mb-3">
             Price: <span>{price}$</span>
           </p>
-          <p className="card-text">
+          <p className="card-text ms-4 mb-3">
             Release Date: <span>{releaseDate}</span>
           </p>
         </div>
         <div className="card-body">
           {userInfo.isAdmin ? ( // if the user is admin then display this buttons
             <Fragment>
-              <button
-                type="button"
-                className="btn btn-outline-dark ms-1"
-                onClick={handleFavGameClick(id)}
+              <Link
+                to={`/editgamecard/${id}`}
+                className="btn btn-outline-dark ms-3 mb-4"
               >
-                add
-                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
-              </button>
-
-              <Link to={`/editgamecard/${id}`} className="btn btn-outline-dark">
                 Edit
                 <FontAwesomeIcon className="FontIcon" icon={faPenToSquare} />
               </Link>
 
+              <button
+                type="button"
+                className="btn btn-outline-dark ms-3 mb-4"
+                onClick={handleFavGameClick(id)}
+              >
+                Add to library
+                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
+              </button>
+
               {pathname == "/storepage" ? (
                 <button
                   type="button"
-                  className="btn btn-outline-dark"
+                  className="btn btn-outline-dark ms-3 mb-4"
                   onClick={handleDeleteBtnClick}
                 >
                   Delete
@@ -138,28 +134,16 @@ const GameCardComponent = ({
               ) : (
                 ""
               )}
-              {/* {pathname == "/storepage" ? (
-                <div className="like-button">
-                  <div className="heart-bg">
-                    <div
-                      className="heart-icon"
-                      onClick={handleFavGameClick(id)}
-                    ></div>
-                  </div>
-                </div>
-              ) : (
-                ""
-              )} */}
+
               {pathname == "/librarypage" ? (
                 <button
                   type="button"
-                  className="btn btn-danger ms-1"
+                  className="btn btn-outline-dark ms-3"
                   onClick={() => {
                     onDelete();
-                    console.log("hey", index);
                   }}
                 >
-                  remove
+                  Remove
                   <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
               ) : (
@@ -174,7 +158,7 @@ const GameCardComponent = ({
                 data-bs-toggle="modal"
                 data-bs-target={`#f${index}`}
               >
-                more info
+                More Info
                 <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
               </button>
               <div
@@ -222,19 +206,19 @@ const GameCardComponent = ({
               {pathname == "/librarypage" ? (
                 <button
                   type="button"
-                  className="btn btn-outline-light ms-1"
+                  className="btn btn-outline-light"
                   onClick={onDelete}
                 >
-                  remove
+                  Remove
                   <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
               ) : (
                 <button
                   type="button"
-                  className="btn btn-outline-light ms-1"
+                  className="btn btn-outline-light"
                   onClick={handleFavGameClick(id)}
                 >
-                  add library
+                  Add to library
                   <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
                 </button>
               )}
