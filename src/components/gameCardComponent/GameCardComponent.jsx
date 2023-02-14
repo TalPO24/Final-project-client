@@ -84,7 +84,7 @@ const GameCardComponent = ({
       <div className="card">
         <img
           src={img}
-          className="card-img-top h-auto"
+          className="card-img-top h-auto ms-3"
           alt={name}
           style={{ aspectRatio: "3 / 3", objectFit: "cover" }}
         />
