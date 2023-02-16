@@ -111,10 +111,26 @@ const LibraryPage = () => {
     }
   };
 
+  //* This is a JavaScript function called handleCategoryFilter that takes an event object as an argument.
+  //*The function is used to update a state variable called categoryFilter with the value of the selected option from a dropdown menu.
+  //* The ev argument is an event object that represents the user's interaction with the dropdown menu.
+  //* When the user selects an option from the menu, the value property of the selected option is used to update the categoryFilter state variable.
+  //* The setCategoryFilter function is called with the value of the selected option as an argument.
+  //* This function is used to update the state variable categoryFilter with the new value.
+  //* By updating the categoryFilter state variable, the function will trigger a re-render of the component,
+  //* which will update the content displayed on the page based on the selected category.
   const handleCategoryFilter = (ev) => {
     setCategoryFilter(ev.target.value);
   };
 
+  //* This is a React useEffect hook that triggers a re-render whenever the categoryFilter state variable changes.
+  //* The effect updates the URL query string with the new category filter value, which in turn updates the content displayed on the page.
+  //* Here's how it works:
+  //* The useEffect hook is called whenever the categoryFilter state variable changes.
+  //* It creates a new instance of the URLSearchParams object, which parses the current query string in the URL.
+  //* It then sets the category parameter of the qParams object with the new value of categoryFilter.
+  //* Finally, it calls the history.push function to update the URL with the new query string.
+  //* By updating the query string in the URL, the component can use the new value of categoryFilter to filter and display the correct content on the page.
   useEffect(() => {
     let qParmas = new URLSearchParams(location.search);
     qParmas.set("category", categoryFilter);
@@ -162,9 +178,9 @@ const LibraryPage = () => {
       localStorage.setItem("token", data);
       dispatch(authActions.removeFromWishList(newArr));
       setGameCardArr(newArr);
-      toast("you removed the card", {
+      toast("you removed the card from the library", {
         position: "bottom-center",
-        autoClose: 500,
+        autoClose: 800,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

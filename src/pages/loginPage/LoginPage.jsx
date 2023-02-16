@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 import "../loginPage/LoginPage.scss";
 import { useDispatch } from "react-redux";
 import { authActions } from "store/auth";
-// import Joi from "joi-browser";
-import validate from "validation/validation";
-import loginSchema from "validation/login.validation";
 
 //*  the useState hook create a state variable userInput and a function setUserInput to update the state.
 //* The initial value of userInput is an object with properties email and password initialized as empty strings.
@@ -37,59 +34,6 @@ const LoginPage = () => {
     let newUserInput = JSON.parse(JSON.stringify(userInput));
     newUserInput[event.target.id] = event.target.value;
     setUserInput(newUserInput);
-  };
-
-  //*enabeling and disabeling Login button
-  // useEffect(() => {
-  //   const { error } = validate(userInput, loginSchema);
-  //   if (error) {
-  //     setLoginBtn(true);
-  //   } else {
-  //     setLoginBtn(false);
-  //   }
-  // }, [userInput]);
-
-  const handleOnClick = (event) => {
-    event.preventDefault();
-    // const { error } = validate(userInput, loginSchema);
-    // if (error) {
-    //   let errorMsgs = "";
-    //   for (let errorItem of error.details) {
-    //     switch (errorItem.type) {
-    //       case "string.min":
-    //         errorMsgs += `${errorItem.context.label} length must be at least ${errorItem.context.limit} characters long, `;
-    //         break;
-    //       case "string.max":
-    //         errorMsgs += `${errorItem.context.label} length must be at least ${errorItem.context.limit} characters long, `;
-    //         break;
-    //       default:
-    //         errorMsgs += "something went wrong,";
-    //         break;
-    //     }
-    //   }
-    //   toast.error(errorMsgs, {
-    //     position: "top-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //   });
-    //   return;
-    // }
-
-    //   .catch((err) => {
-    //     toast.error("😭 Something went wrong", {
-    //       position: "top-right",
-    //       autoClose: 5000,
-    //       hideProgressBar: false,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //     });
-    //   });
   };
 
   //* this function, is making an HTTP request to the server using axios.

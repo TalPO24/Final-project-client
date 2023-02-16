@@ -1,8 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import validate from "validation/validation";
-import registerSchema from "validation/register.validation";
 import "../registerPage/RegisterPage.scss";
 import { toast } from "react-toastify";
 
@@ -36,18 +34,6 @@ const RegisterPage = () => {
     newUserInput[event.target.id] = event.target.value;
     setUserInput(newUserInput);
   };
-
-  // const [registerBtn, setRegisterBtn] = useState(false);
-
-  // //*enabeling and disabeling Login button
-  // useEffect(() => {
-  //   const { error } = validate(userInput, registerSchema);
-  //   if (error) {
-  //     setRegisterBtn(true);
-  //   } else {
-  //     setRegisterBtn(false);
-  //   }
-  // }, [userInput]);
 
   //* prevent the page from refresh.
   const handleOnSubmit = (event) => {

@@ -14,13 +14,13 @@ const Footer = () => {
             improve my skills as a future developer{" "}
           </p>
           <ul className="socials">
-            <li>
+            <li className="facbook ms-2">
               <a href="#">
                 <FaFacebook />
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/%D7%98%D7%9C-%D7%A4%D7%95%D7%A8%D7%99%D7%A1-b7217423b/">
+              <a href="https://www.linkedin.com/in/tal-poris-b7217423b/">
                 <FaLinkedin />
               </a>
             </li>

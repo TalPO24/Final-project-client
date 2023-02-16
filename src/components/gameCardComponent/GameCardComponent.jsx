@@ -8,14 +8,19 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { Fragment, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
 import { authActions } from "store/auth";
 import { toast } from "react-toastify";
 import "../../components/gameCardComponent/GameCardComponent.scss";
 
-//*  instead of props we used here object destructuring for the father child communication
+//* This code defines a React functional component called GameCardComponent.
+//* The component accepts several props, including name, img, description, price, releaseDate, id, onDelete, index, and gameCategory.
+//* Inside the component, the useSelector hook from the react-redux library is used to retrieve information from the Redux store.
+//* Specifically, the userInfo object is extracted from the auth slice of the store.
+//* The useSelector hook takes a function that selects the desired state from the store.
+//* In this case, the function takes the state object as an argument and returns state.auth.userInfo.
+//* The useDispatch hook is also used to obtain a reference to the Redux store's dispatch function, which is used to dispatch actions to update the store.
+//* Without further context or code, it is difficult to determine exactly what this component does or how it is used in the application.
 const GameCardComponent = ({
   name,
   img,
@@ -30,12 +35,30 @@ const GameCardComponent = ({
   const userInfo = useSelector((state) => state.auth.userInfo);
   const dispatch = useDispatch();
 
+  //* This code defines a function called handleDeleteBtnClick, which is likely to be triggered when a delete button is clicked.
+  //* The function takes no arguments, but it calls the onDelete function and passes it the id value.
+  //* The id value is likely to be the identifier of the game card that is being deleted.
   const handleDeleteBtnClick = () => {
     onDelete(id);
   };
 
+  //* This code uses the useLocation hook from the react-router-dom library in a React component.
+  //* The useLocation hook returns an object that contains information about the current URL location in the browser's address bar.
+  //* In this code, the object is destructured to extract the pathname property.
+  //* The pathname property is a string that represents the current URL path.
+  //* By using this hook and extracting the pathname property,
+  //* the code can get information about the current URL path and use it to conditionally render content in the component or to perform other actions based on the current URL path.
   const { pathname } = useLocation();
 
+  //* This code defines a function called handleFavGameClick that takes a productId argument and returns an asynchronous function.
+  //* The returned function is likely to be called when the user clicks a button to add a game to their wishlist.
+  //* Inside the function, the wishListArr array is created by mapping over the userInfo.wishList array and extracting the _id property of each item.
+  //* Then the productId argument is added to the wishListArr array using the push method.
+  //* Next, an asynchronous axios.patch request is made to the server to update the user's wishlist.
+  //* The userInfo.id property is used to identify the user, and the wishList property is updated with the new wishListArr array.
+  //* If the request is successful, the localStorage.setItem method is used to update the user's access token.
+  //* The authActions.addToWishList action is dispatched to the Redux store to update the state with the new wishlist item.
+  //* Finally, the toast method from the react-toastify library is called to display a success message if the request is successful or an error message if there is an error.
   const handleFavGameClick = (productId) => async () => {
     try {
       const wishListArr = userInfo.wishList.map((product) => product._id);
@@ -84,7 +107,7 @@ const GameCardComponent = ({
       <div className="card">
         <img
           src={img}
-          className="card-img-top h-auto ms-3"
+          className="card-img-top h-auto ms-2"
           alt={name}
           style={{ aspectRatio: "3 / 3", objectFit: "cover" }}
         />
@@ -159,7 +182,7 @@ const GameCardComponent = ({
                 data-bs-target={`#f${index}`}
               >
                 More Info
-                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
+                <FontAwesomeIcon className="FontIcon" icon={faPenToSquare} />
               </button>
               <div
                 className="modal fade"

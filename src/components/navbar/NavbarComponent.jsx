@@ -7,6 +7,7 @@ import { authActions } from "store/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import "../../components/navbar/NavBarComponent.scss";
+import { toast } from "react-toastify";
 
 let links = [
   {
@@ -75,6 +76,16 @@ const NavbarComponent = () => {
     localStorage.clear();
     dispatch(authActions.logout());
     history.push("/login");
+    toast("you logged out!", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: false,
+      theme: "dark",
+    });
   };
 
   return (
