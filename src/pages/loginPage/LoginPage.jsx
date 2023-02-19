@@ -72,9 +72,7 @@ const LoginPage = () => {
         email: userInput.email,
         password: userInput.password,
       })
-      .then((res) => {
-        // console.log("res", res);
-      })
+      .then((res) => {})
       .catch((err) => {
         let newUserInputErrors = {
           name: [],
@@ -91,9 +89,7 @@ const LoginPage = () => {
       });
   };
 
-  useEffect(() => {
-    // console.log(userInputErrors);
-  }, [userInputErrors]);
+  useEffect(() => {}, [userInputErrors]);
 
   return (
     <Fragment>
@@ -117,8 +113,11 @@ const LoginPage = () => {
                       onChange={handleUserInputChange}
                     />
                     <ul className="list-group">
-                      {userInputErrors.email.map((error) => (
-                        <li className="list-group-item list-group-item-danger">
+                      {userInputErrors.email.map((error, idx) => (
+                        <li
+                          className="list-group-item list-group-item-danger"
+                          key={idx}
+                        >
                           {error}
                         </li>
                       ))}
@@ -137,8 +136,11 @@ const LoginPage = () => {
                       onChange={handleUserInputChange}
                     />
                     <ul className="list-group">
-                      {userInputErrors.password.map((error) => (
-                        <li className="list-group-item list-group-item-danger">
+                      {userInputErrors.password.map((error, idx) => (
+                        <li
+                          className="list-group-item list-group-item-danger"
+                          key={idx}
+                        >
                           {error}
                         </li>
                       ))}

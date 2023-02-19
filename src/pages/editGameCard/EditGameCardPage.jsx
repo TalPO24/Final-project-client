@@ -33,9 +33,7 @@ const EditGameCardPage = () => {
           gameImg: data.gameImg,
           gameCategory: data.gameCategory,
         });
-      } catch (err) {
-        // console.log(err);
-      }
+      } catch (err) {}
     })();
   }, []);
 
@@ -75,7 +73,6 @@ const EditGameCardPage = () => {
   //* If the request fails, it displays a toast message with the text "somthing went wrong".
   const handleFormSUbmit = async (event) => {
     event.preventDefault();
-    //! need to add joi validation !!
     try {
       let { data } = await axios.patch(`/games/${id}`, gameCardData);
 

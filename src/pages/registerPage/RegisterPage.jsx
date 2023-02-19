@@ -1,8 +1,8 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../registerPage/RegisterPage.scss";
 import { toast } from "react-toastify";
+import "../registerPage/RegisterPage.scss";
 
 //* this function uses the Hook "useState" to initialize the state variable "userInput" with an initial value of an object that has properties for "name", "email", and "password".
 //* The state variable "userInput" is an object that can be modified by the component and is used to keep track of the values the user inputs into the corresponding form fields for name, email, and password.
@@ -81,9 +81,7 @@ const RegisterPage = () => {
       });
   };
 
-  useEffect(() => {
-    // console.log(userInputErrors);
-  }, [userInputErrors]);
+  useEffect(() => {}, [userInputErrors]);
 
   return (
     <Fragment>
@@ -106,8 +104,11 @@ const RegisterPage = () => {
                     onChange={handleUserInputChange}
                   />
                   <ul className="list-group">
-                    {userInputErrors.name.map((error) => (
-                      <li className="list-group-item list-group-item-danger">
+                    {userInputErrors.name.map((error, idx) => (
+                      <li
+                        className="list-group-item list-group-item-danger"
+                        key={idx}
+                      >
                         {error}
                       </li>
                     ))}
@@ -126,8 +127,11 @@ const RegisterPage = () => {
                     onChange={handleUserInputChange}
                   />
                   <ul className="list-group">
-                    {userInputErrors.email.map((error) => (
-                      <li className="list-group-item list-group-item-danger">
+                    {userInputErrors.email.map((error, idx) => (
+                      <li
+                        className="list-group-item list-group-item-danger"
+                        key={idx}
+                      >
                         {error}
                       </li>
                     ))}
@@ -146,8 +150,11 @@ const RegisterPage = () => {
                     onChange={handleUserInputChange}
                   />
                   <ul className="list-group">
-                    {userInputErrors.password.map((error) => (
-                      <li className="list-group-item list-group-item-danger">
+                    {userInputErrors.password.map((error, idx) => (
+                      <li
+                        className="list-group-item list-group-item-danger"
+                        key={idx}
+                      >
                         {error}
                       </li>
                     ))}

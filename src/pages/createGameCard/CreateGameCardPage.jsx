@@ -87,9 +87,7 @@ const CreateGameCardPage = () => {
     }
   };
 
-  useEffect(() => {
-    // console.log(gameCardInput);
-  }, [gameCardInput]);
+  useEffect(() => {}, [gameCardInput]);
 
   return (
     <form onSubmit={handleFormSubmit}>

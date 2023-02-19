@@ -4,7 +4,6 @@ import {
   faPenToSquare,
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
-// import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { Fragment, useEffect } from "react";

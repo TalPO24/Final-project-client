@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import "./HomePage.scss";
+import "./HomePage2.scss";
 import GameCardComponent from "components/gameCardComponent/GameCardComponent";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -200,9 +201,6 @@ const HomePage = () => {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
-        {/* <Link to={"/register"} className="button1">
-          <span>REGISTER NOW FOR FREE</span>
-        </Link> */}
       </div>
     </Fragment>
   );

@@ -192,9 +192,7 @@ const GameStorePage = () => {
   };
 
   //* The useEffect logs the gameCardArr state to the console, and it will be re-run every time the GameCardComponent changes.
-  useEffect(() => {
-    // console.log(gameCardArr);
-  }, [GameCardComponent]);
+  useEffect(() => {}, [GameCardComponent]);
 
   return (
     <Fragment>
@@ -244,7 +242,6 @@ const GameStorePage = () => {
             aria-label="Default select example"
             value={categoryFilter}
             onChange={handleCategoryFilter}
-            // defaultValue="Category"
           >
             <option disabled hidden>
               Category

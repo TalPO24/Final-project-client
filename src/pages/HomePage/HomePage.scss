@@ -3,11 +3,6 @@
   --screen-height: 100vh;
 }
 
-.form-floating {
-  padding-bottom: 3rem;
-  font-family: "Poppins", sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -93,40 +88,4 @@ h2 {
 
 .carousel-item {
   padding-bottom: 5rem;
-}
-
-//*our store btn
-.button1 {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  letter-spacing: 0.1em;
-  font-weight: 400;
-  padding: 10px 30px;
-  transition: 0.5s;
-  border-radius: 2px;
-}
-
-.button1:hover {
-  background: #01fe87;
-  color: #01fe87;
-  box-shadow: 0 0 35px #01fe87;
-}
-
-.button1::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: #111;
-}
-
-.button1 span {
-  position: relative;
-  z-index: 1;
 }

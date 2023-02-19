@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { Fragment, useState } from "react";
-import "../MyGamesLibrary/MyGamesLibrary.scss";
 import { authActions } from "store/auth";
 import { toast } from "react-toastify";
+import "../MyGamesLibrary/MyGamesLibrary.scss";
 
 //* useSelector is used to get the loggedIn and userInfo state from the Redux store.
 //* useState is used to initialize two variables: gameCardArr and filterInput.
@@ -178,7 +178,7 @@ const LibraryPage = () => {
       localStorage.setItem("token", data);
       dispatch(authActions.removeFromWishList(newArr));
       setGameCardArr(newArr);
-      toast("you removed the card from the library", {
+      toast("you removed the card from your library", {
         position: "bottom-center",
         autoClose: 800,
         hideProgressBar: true,
@@ -203,9 +203,7 @@ const LibraryPage = () => {
   };
 
   //* The useEffect logs the gameCardArr state to the console, and it will be re-run every time the GameCardComponent changes.
-  useEffect(() => {
-    // console.log(gameCardArr);
-  }, [GameCardComponent]);
+  useEffect(() => {}, [GameCardComponent]);
 
   return (
     <Fragment>

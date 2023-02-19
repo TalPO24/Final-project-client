@@ -1,4 +1,3 @@
-//*      imports
 import NavBarLinkPartial from "partial/NavBarLinkPartial";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import { authActions } from "store/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
-import "../../components/navbar/NavBarComponent.scss";
 import { toast } from "react-toastify";
+import "../../components/navbar/NavBarComponent.scss";
 
 let links = [
   {
