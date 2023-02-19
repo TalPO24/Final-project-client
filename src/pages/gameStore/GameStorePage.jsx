@@ -244,8 +244,11 @@ const GameStorePage = () => {
             aria-label="Default select example"
             value={categoryFilter}
             onChange={handleCategoryFilter}
+            // defaultValue="Category"
           >
-            <option selected>Category</option>
+            <option disabled hidden>
+              Category
+            </option>
             <option>Action</option>
             <option>Strategy</option>
             <option>RPG</option>
