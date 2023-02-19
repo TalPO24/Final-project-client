@@ -243,9 +243,7 @@ const GameStorePage = () => {
             value={categoryFilter}
             onChange={handleCategoryFilter}
           >
-            <option disabled hidden>
-              Category
-            </option>
+            <option>Category</option>
             <option>Action</option>
             <option>Strategy</option>
             <option>RPG</option>
