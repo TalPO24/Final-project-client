@@ -42,6 +42,7 @@ const LoginPage = () => {
   //* It will also show a success toast message.
   const handleLoginClick = () => {
     axios.post("/auth/login", userInput).then((res) => {
+      console.log(res)
       localStorage.setItem("token", res.data.token);
       dispatch(authActions.login(jwt_decode(res.data.token)));
       //*redirect to panelPage
@@ -56,37 +57,6 @@ const LoginPage = () => {
         theme: "dark",
       });
     });
-
-    //* This code is making a POST request to the endpoint ("/auth/register") using axios.
-    //* It is sending an object with name, email, and password properties of the userInput object as the payload.
-    //* If the request is successful, it will log the response object to the console.
-    //* In case the request is not successful, it will handle the error in the catch block.
-    //* It creates an object newUserInputErrors with properties name, email, and password initialized as empty arrays.
-    //* It then iterates through the error details in the response object, and for each error, it pushes the error message to the corresponding property of the newUserInputErrors object.
-    //* Finally, it sets the newUserInputErrors object to the userInputErrors state variable.
-    //* This code is essentially handling errors that may occur when a user is trying to register, It will keep track of errors for each input field, such as name, email, and password, and then updates the state variable userInputErrors.
-    //* This way the error message can be displayed to the user.
-    axios
-      .post("/auth/register", {
-        name: userInput.name,
-        email: userInput.email,
-        password: userInput.password,
-      })
-      .then((res) => {})
-      .catch((err) => {
-        let newUserInputErrors = {
-          name: [],
-          email: [],
-          password: [],
-        };
-        for (let errorItem of err.response.data.err.details) {
-          newUserInputErrors[errorItem.path[0]] = [
-            ...newUserInputErrors[errorItem.path[0]],
-            errorItem.message,
-          ];
-        }
-        setUserInputErrors(newUserInputErrors);
-      });
   };
 
   useEffect(() => {}, [userInputErrors]);
