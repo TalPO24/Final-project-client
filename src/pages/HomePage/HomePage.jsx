@@ -74,7 +74,7 @@ const HomePage = () => {
           {gameCardArr.length > 0 &&
             gameCardArr.map((item, idx) => (
               <div
-                className={0 == idx ? `carousel-item active` : "carousel-item"}
+                className={0 === idx ? `carousel-item active` : "carousel-item"}
                 key={idx}
               >
                 <img
