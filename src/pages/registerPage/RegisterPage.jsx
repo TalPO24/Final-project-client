@@ -177,13 +177,12 @@ const RegisterPage = () => {
                     ))}
                   </ul>
                 </div>
-                <Link
-                  to={"/register"}
+                <button
                   className="registerBtn "
                   onClick={handleRegisterClick}
                 >
                   <span>Register</span>
-                </Link>
+                </button>
               </div>
             </div>
           </div>

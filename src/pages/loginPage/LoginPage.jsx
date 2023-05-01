@@ -17,7 +17,6 @@ const LoginPage = () => {
     password: "",
   });
 
-  const [loginBtn, setLoginBtn] = useState(false);
   const dispatch = useDispatch();
 
   const [userInputErrors, setUserInputErrors] = useState({
@@ -48,7 +47,8 @@ const LoginPage = () => {
   //* If the request is successful, it will store the token received in the response in the localStorage and dispatch the login action with the decoded token to update the application state.
   //* It will also show a success toast message.
   const handleLoginClick = () => {
-    axios.post("/auth/login", userInput)
+    axios.post("/auth/login", {email: userInput.email,
+    password: userInput.password,})
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         dispatch(authActions.login(jwt_decode(res.data.token)));
