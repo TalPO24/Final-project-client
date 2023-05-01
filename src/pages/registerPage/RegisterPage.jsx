@@ -1,13 +1,16 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect,} from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../registerPage/RegisterPage.scss";
 
+
 //* this function uses the Hook "useState" to initialize the state variable "userInput" with an initial value of an object that has properties for "name", "email", and "password".
 //* The state variable "userInput" is an object that can be modified by the component and is used to keep track of the values the user inputs into the corresponding form fields for name, email, and password.
 //* The useState hook allows the component to have a state and the setUserInput function allows the component to change the state.
 const RegisterPage = () => {
+  const history = useHistory();
   const [userInput, setUserInput] = useState({
     name: "",
     email: "",
@@ -64,6 +67,8 @@ const RegisterPage = () => {
           progress: undefined,
           theme: "dark",
         });
+        // navigate to the login page
+        history.push("/login");
       })
       .catch((err) => {
         let newUserInputErrors = {
@@ -71,17 +76,29 @@ const RegisterPage = () => {
           email: [],
           password: [],
         };
-        for (let errorItem of err.response.data.err.details) {
-          newUserInputErrors[errorItem.path[0]] = [
-            ...newUserInputErrors[errorItem.path[0]],
-            errorItem.message,
-          ];
+        if (Array.isArray(err.response.data.err.details)) {
+          for (let errorItem of err.response.data.err.details) {
+            newUserInputErrors[errorItem.path[0]] = [
+              ...newUserInputErrors[errorItem.path[0]],
+              errorItem.message,
+            ];
+          }
         }
         setUserInputErrors(newUserInputErrors);
+        toast("the user is already registered", {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       });
   };
-
-  useEffect(() => {}, [userInputErrors]);
+  
+  
 
   return (
     <Fragment>

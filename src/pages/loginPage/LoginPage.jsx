@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Fragment, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import { authActions } from "store/auth";
 //*  the useState hook create a state variable userInput and a function setUserInput to update the state.
 //* The initial value of userInput is an object with properties email and password initialized as empty strings.
 const LoginPage = () => {
+  const history = useHistory();
   const [userInput, setUserInput] = useState({
     email: "",
     password: "",
@@ -36,35 +38,65 @@ const LoginPage = () => {
     setUserInput(newUserInput);
   };
 
+  //* prevent the page from refresh.
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+  };
+
   //* this function, is making an HTTP request to the server using axios.
   //* It is a POST request to the endpoint ("/auth/login") with the payload userInput.
   //* If the request is successful, it will store the token received in the response in the localStorage and dispatch the login action with the decoded token to update the application state.
   //* It will also show a success toast message.
   const handleLoginClick = () => {
-    axios.post("/auth/login", userInput).then((res) => {
-      console.log(res)
-      localStorage.setItem("token", res.data.token);
-      dispatch(authActions.login(jwt_decode(res.data.token)));
-      //*redirect to panelPage
-      toast("you logged in!", {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: false,
-        theme: "dark",
+    axios.post("/auth/login", userInput)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        dispatch(authActions.login(jwt_decode(res.data.token)));
+        toast("you logged in!", {
+          position: "bottom-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: false,
+          theme: "dark",
+        });
+        history.push("/");
+      })
+      .catch((err) => {
+        let newUserInputErrors = {
+          email: [],
+          password: [],
+        };
+        if (err.response && err.response.data && err.response.data.err) {
+          for (let errorItem of err.response.data.err.details) {
+            newUserInputErrors[errorItem.path[0]] = [
+              ...newUserInputErrors[errorItem.path[0]],
+              errorItem.message,
+            ];
+          }
+        }
+        setUserInputErrors(newUserInputErrors);
+          toast.error("E-mail or Password are incorrect. Please try again.", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: false,
+            theme: "dark",
+          });
+        
       });
-    });
   };
-
-  useEffect(() => {}, [userInputErrors]);
+  
 
   return (
     <Fragment>
       <div className="container">
-        <form className="row g-3">
+        <form className="row g-3" onSubmit={handleOnSubmit}>
           <span className="col d-flex flex-column justify-content-center align-items-center">
             <h1>Login page</h1>
             <div>
@@ -82,16 +114,34 @@ const LoginPage = () => {
                       value={userInput.email}
                       onChange={handleUserInputChange}
                     />
-                    <ul className="list-group">
-                      {userInputErrors.email.map((error, idx) => (
-                        <li
-                          className="list-group-item list-group-item-danger"
-                          key={idx}
-                        >
-                          {error}
-                        </li>
-                      ))}
-                    </ul>
+                    {userInputErrors.email.length > 0 && (
+  <ul className="list-group">
+    {userInputErrors.email.map((error, idx) => (
+      <li
+        className="list-group-item list-group-item-danger"
+        key={idx}
+      >
+        {error}
+      </li>
+    ))}
+  </ul>
+)}
+
+{userInputErrors.password.length > 0 && (
+  <ul className="list-group">
+    {userInputErrors.password.map((error, idx) => (
+      <li
+        className="list-group-item list-group-item-danger"
+        key={idx}
+      >
+        {error}
+      </li>
+    ))}
+  </ul>
+)}
+
+
+
                   </div>
                   <div className="col-md-6 w-100">
                     <label htmlFor="password" className="form-label">
@@ -116,13 +166,12 @@ const LoginPage = () => {
                       ))}
                     </ul>
                   </div>
-                  <Link
-                    to={"/"}
+                  <button
                     className="loginBtn"
                     onClick={handleLoginClick}
                   >
                     <span>login</span>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

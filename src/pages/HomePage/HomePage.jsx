@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import "./HomePage.scss";
 import "./HomePage2.scss";
-import GameCardComponent from "components/gameCardComponent/GameCardComponent";
+import GameCardComponent from "components/gameCardComponent/GameCardComponent"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
