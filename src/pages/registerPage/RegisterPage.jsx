@@ -50,6 +50,41 @@ const RegisterPage = () => {
   //* and adding the error message to the corresponding key of the error object.
   //* Finally, it updates the state with the new error object.
   const handleRegisterClick = () => {
+    let newUserInputErrors = {
+      name: [],
+      email: [],
+      password: [],
+    };
+  
+    // validate name input
+    if (!userInput.name) {
+      newUserInputErrors.name.push("Please enter your name");
+    }
+  
+    // validate email input
+    if (!userInput.email) {
+      newUserInputErrors.email.push("Please enter your email");
+    } else if (!/\S+@\S+\.\S+/.test(userInput.email)) {
+      newUserInputErrors.email.push("Please enter a valid email address");
+    }
+  
+    // validate password input
+if (!userInput.password) {
+  newUserInputErrors.password.push("Please enter a password");
+} else if (userInput.password.length < 6) {
+  newUserInputErrors.password.push("Password must be at least 6 characters long");
+} else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+/.test(userInput.password)) {
+  newUserInputErrors.password.push("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character");
+}
+
+  
+    // check for input errors
+    if (newUserInputErrors.name.length || newUserInputErrors.email.length || newUserInputErrors.password.length) {
+      setUserInputErrors(newUserInputErrors);
+      return;
+    }
+  
+    // if no input errors, send request to server
     axios
       .post("/auth/register", {
         name: userInput.name,
@@ -71,31 +106,19 @@ const RegisterPage = () => {
         history.push("/login");
       })
       .catch((err) => {
-        let newUserInputErrors = {
-          name: [],
-          email: [],
-          password: [],
-        };
-        if (Array.isArray(err.response.data.err.details)) {
-          for (let errorItem of err.response.data.err.details) {
-            newUserInputErrors[errorItem.path[0]] = [
-              ...newUserInputErrors[errorItem.path[0]],
-              errorItem.message,
-            ];
-          }
+       
+          toast("the email is already registered", {
+            position: "bottom-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
-        setUserInputErrors(newUserInputErrors);
-        toast("the user is already registered", {
-          position: "bottom-center",
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      });
+      );
   };
   
   

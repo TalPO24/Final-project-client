@@ -212,6 +212,11 @@ const GameCardComponent = ({
                         Release Date: {releaseDate}
                       </p>
                     </div>
+                    <div className="moreInfo">
+                      <h1>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ipsum maiores quaerat! Similique alias, ea excepturi quibusdam quidem nam voluptatem. Impedit odit repellat possimus reiciendis.
+                      </h1>
+                    </div>
 
                     <div className="modal-footer">
                       <button
