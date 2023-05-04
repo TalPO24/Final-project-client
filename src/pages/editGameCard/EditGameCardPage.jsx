@@ -2,15 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
-//* This function declares a state variable gameCardData which is used to store the data of the game card being edited.
-//* It uses the useParams hook to extract the id of the game card from the URL.
-//* It also uses the useEffect hook to fetch the data of the game card from the server using an async/await function,
-//* which makes a GET request to the endpoint /games/getbyid/${id} where id is the id of the game card being edited.
-//* The response data is then set to the gameCardData state using the setGameCardData function.
-//* If the API call fails and throws an error, it logs the error to the console.
-//* It runs only once and it is triggered when the component is first rendered.
-//* It is fetching the data from the server and updating the state.
 const EditGameCardPage = () => {
   const [gameCardData, setGameCardData] = useState({
     gameName: "",
@@ -21,6 +14,8 @@ const EditGameCardPage = () => {
     gameCategory: "",
   });
   let { id } = useParams();
+  const history = useHistory();
+
   useEffect(() => {
     (async () => {
       try {
@@ -37,10 +32,6 @@ const EditGameCardPage = () => {
     })();
   }, []);
 
-  //* The function takes an event object (ev) as a parameter, which is passed from the input fields when there is a change in the value.
-  //* It then creates a new variable (newgameCardInput) which is a deep copy of the current gameCardData state using JSON.stringify and JSON.parse.
-  //* It then checks if the (newgameCardInput) object has a property that matches the id of the input field that triggered the change event,
-  //* if so it updates the value of that property to the new value entered in the input field, and then it updates the gameCardData state with the new input value.
   const handleGameCardInputChange = (ev) => {
     let newgameCardInput = JSON.parse(JSON.stringify(gameCardData));
     if (newgameCardInput.hasOwnProperty(ev.target.id)) {
@@ -49,10 +40,6 @@ const EditGameCardPage = () => {
     }
   };
 
-  //* The function calls the setGameCardInput function with a callback function as an argument.
-  //* The callback function takes the previous gameCardInput state and updates the gameCategory property with the value of the checkbox which is ev.target.value,
-  //* then it returns a new state object which is a copy of the previous state with the spread operator ...prev.
-  //* This allows the component to keep track of the current input values in the form fields, including the value of the checkbox which represents the gameCategory.
   const handleCheckBox = (ev) => {
     setGameCardData((prev) => {
       prev.gameCategory = ev.target.value;
@@ -61,16 +48,11 @@ const EditGameCardPage = () => {
       };
     });
   };
-  //* This useEffect hook will log the current state of gameCardData to the console whenever it updates.
+
   useEffect(() => {
     // console.log(gameCardData);
   }, [gameCardData]);
 
-  //* The handleFormSubmit function is an asynchronous function that is triggered when the form is submitted.
-  //* It first prevents the default form submission behavior by calling (event.preventDefault()).
-  //* It then makes a PATCH request to the server, passing in the gameCardData object as the data to be updated in the server.
-  //* If the request is successful, it displays a toast message with the text "you have successfuly edited the card".
-  //* If the request fails, it displays a toast message with the text "somthing went wrong".
   const handleFormSUbmit = async (event) => {
     event.preventDefault();
     try {
@@ -86,6 +68,9 @@ const EditGameCardPage = () => {
         progress: undefined,
         theme: "dark",
       });
+
+      // Navigate to the store page after successful submission
+      history.push("/storepage");
     } catch (error) {
       toast.error("somthing went wrong", {
         position: "bottom-center",
@@ -99,6 +84,7 @@ const EditGameCardPage = () => {
       });
     }
   };
+
 
   return (
     <form onSubmit={handleFormSUbmit}>

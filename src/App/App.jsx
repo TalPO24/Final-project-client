@@ -1,4 +1,4 @@
-//*    imports
+//* imports
 import { useState, useEffect } from "react";
 import "./App.scss";
 import { ToastContainer } from "react-toastify";
@@ -22,15 +22,6 @@ import AuthGuardRoute from "components/AuthGuardRouteComponent/AuthGuardRouteCom
 import MoreInfoGameCardPage from "components/gameCardComponent/GameCardInfoComponent";
 
 //* This is a JavaScript function called rain that generates a rain animation on a webpage.
-//* The function starts by setting a amount variable to 20 and selecting the #root element on the page using the document.querySelector method.
-//* It also sets a i variable to 0, which is used in the while loop.
-//* The while loop will run amount number of times and will create a new HTML i element using the document.createElement method.
-//* Inside the loop, the function sets a random size for the drop element between 0.3 and 5 pixels.
-//* It sets a random posX value for the horizontal position of the drop element between 0 and the inner width of the window minus 25 pixels.
-//* It sets a random delay value between 0 and -20 seconds for the animationDelay property and a random duration value between 1 and 50 seconds for the animationDuration property.
-//* The function sets the width, left, animationDelay, and animationDuration CSS properties of the drop element to the generated values.
-//* Finally, the function appends the drop element to the body element, and increments the i variable by 1, so that the loop will stop when it reaches the amount value.
-//* When this function is called, it will generate a rain animation with amount number of drops falling from random positions within the window
 function rain() {
   let amount = 20;
   let body = document.querySelector("#root");

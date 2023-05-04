@@ -238,6 +238,7 @@ const LibraryPage = () => {
                     description={game.gameDescription}
                     price={game.gamePrice}
                     releaseDate={game.gameReleaseDate}
+                    gameMoreInfo={game.gameMoreInfo}
                     id={game._id}
                     onDelete={handleGameCardDelete(index)}
                     index={index}

@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import "../../components/gameCardComponent/GameCardComponent.scss";
 
 
+
 const GameCardComponent = ({
   name,
   img,
@@ -117,7 +118,7 @@ const GameCardComponent = ({
           </p>
         </div>
         <div className="card-body">
-          {userInfo.isAdmin ? ( // if the user is admin then display this buttons
+          {userInfo.isAdmin && pathname === "/storepage" ? ( // if the user is admin then display this buttons
             <Fragment>
               <Link
                 to={`/editgamecard/${id}`}
@@ -127,16 +128,7 @@ const GameCardComponent = ({
                 <FontAwesomeIcon className="FontIcon" icon={faPenToSquare} />
               </Link>
 
-              <button
-                type="button"
-                className="btn btn-outline-dark ms-3 mb-4"
-                onClick={handleFavGameClick(id)}
-              >
-                Add to library
-                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
-              </button>
-
-              {pathname == "/storepage" ? (
+              
                 <button
                   type="button"
                   className="btn btn-outline-dark ms-3 mb-4"
@@ -145,11 +137,75 @@ const GameCardComponent = ({
                   Delete
                   <FontAwesomeIcon className="FontIcon" icon={faTrashCan} />
                 </button>
-              ) : (
-                ""
-              )}
+              
 
-              {pathname == "/librarypage" ? (
+
+              <button
+                type="button"
+                className="btn btn-outline-dark ms-3 mb-4"
+                data-bs-toggle="modal"
+                data-bs-target={`#f${index}`}
+              >
+                More Info
+                <FontAwesomeIcon className="FontIcon" icon={faPenToSquare} />
+              </button>
+              <div
+                className="modal fade"
+                id={`f${index}`}
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabIndex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <img
+                        src={img}
+                        className="card-img-top h-auto"
+                        alt={name}
+                        style={{ aspectRatio: "4 / 3", objectFit: "cover" }}
+                      />
+                    </div>
+                    <div className="modal-body">
+                      <p className="card-text text-dark">Name:{name}</p>
+                      <p className="card-text text-dark">
+                        Description: {description}
+                      </p>
+                      <p className="card-text text-dark">Price: {price}$</p>
+                      <p className="card-text text-dark">
+                        Release Date: {releaseDate}
+                      </p>
+                      
+                    </div>
+                    <div className="moreInfo">
+                      <h1>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ipsum maiores quaerat! Similique alias, ea excepturi quibusdam quidem nam voluptatem. Impedit odit repellat possimus reiciendis.
+                      </h1>
+                    </div>
+
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="btn btn-outline-dark ms-3 mb-4"
+                onClick={handleFavGameClick(id)}
+              >
+                Add to library
+                <FontAwesomeIcon className="FontIcon" icon={faBookmark} />
+              </button>
+              {pathname === "/librarypage" ? (
                 <button
                   type="button"
                   className="btn btn-outline-dark ms-3"
@@ -168,7 +224,7 @@ const GameCardComponent = ({
             <Fragment>
               <button
                 type="button"
-                className="btn btn-outline-light"
+                className="btn btn-outline-dark ms-3 mb-4"
                 data-bs-toggle="modal"
                 data-bs-target={`#f${index}`}
               >
@@ -225,7 +281,7 @@ const GameCardComponent = ({
               {pathname == "/librarypage" ? (
                 <button
                   type="button"
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-dark ms-3 mb-4"
                   onClick={onDelete}
                 >
                   Remove
@@ -234,7 +290,7 @@ const GameCardComponent = ({
               ) : (
                 <button
                   type="button"
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-dark ms-3 mb-4"
                   onClick={handleFavGameClick(id)}
                 >
                   Add to library

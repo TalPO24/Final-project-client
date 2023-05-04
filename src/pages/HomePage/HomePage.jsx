@@ -118,9 +118,9 @@ const HomePage = () => {
         alt="free games pic"
         style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
       />
-      <Link to={"/storepage"} className="button1">
-        <span>check our store</span>
-      </Link>
+      <a href="/storepage" className="button1">
+  <span>check our store</span>
+</a>
 
       <img
         className="imgController"

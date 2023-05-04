@@ -13,24 +13,18 @@ const CreateGameCardPage = () => {
     gameReleaseDate: "",
     gamePrice: "",
     gameImg: "",
-    gameCategory: "",
+    gameMoreInfo:"",
+    
   });
 
-  //* The function starts by creating a copy of the gameCardInput state object using (JSON.parse(JSON.stringify(gameCardInput))), this creates a deep copy of the object.
-  //* It then updates the property of the copied object that corresponds to the id of the input field that was changed,
-  //* with the new value from the input field by using (newUserInput[event.target.id] = event.target.value).
-  //* Finally, it calls the setGameCardInput function to update the state with the new input.
-  //* This allows the component to keep track of the current input values in the form fields.
+
   const handleCreateGameCardInput = (event) => {
     let newUserInput = JSON.parse(JSON.stringify(gameCardInput));
     newUserInput[event.target.id] = event.target.value;
     setGameCardInput(newUserInput);
   };
 
-  //* The function calls the setGameCardInput function with a callback function as an argument.
-  //* The callback function takes the previous gameCardInput state and updates the gameCategory property with the value of the checkbox which is ev.target.value,
-  //* then it returns a new state object which is a copy of the previous state with the spread operator ...prev.
-  //* This allows the component to keep track of the current input values in the form fields, including the value of the checkbox which represents the gameCategory.
+
   const handleCheckBox = (ev) => {
     setGameCardInput((prev) => {
       prev.gameCategory = ev.target.value;
@@ -40,19 +34,12 @@ const CreateGameCardPage = () => {
     });
   };
 
-  //* The function calls the preventDefault() method on the event object.
-  //* This method stops the default behavior of the form, which is to submit the form data to the server.
+  //* The function calls the preventDefault() method.
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
 
-  //* The function uses the async/await syntax to handle the asynchronous call to the server.
-  //* It makes a POST request to the server using axios, sending the data of the new game card,
-  //* which is extracted from the gameCardInput state object.
-  //* The endpoint of the API is '/games/'.
-  //* If the request is successful, the function shows a toast notification that the game card was created successfully.
-  //* If the request fails, the function shows a toast notification that something went wrong.
-  //* This function is called on the form submission event or after a button click.
+ 
   const handleCreateCardClick = async () => {
     try {
       const res = await axios.post("/games/", {
