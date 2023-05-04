@@ -241,6 +241,9 @@ const GameStorePage = () => {
             : ""}
         </div>
       </div>
+      <a href="/librarypage" className="button1">
+  <span>Go to your library</span>
+</a>
     </Fragment>
   );
 };

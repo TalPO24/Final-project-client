@@ -229,7 +229,8 @@ const LibraryPage = () => {
               if (
                 game.gameCategory == categoryFilter ||
                 categoryFilter == "Category"
-              ) {
+              )
+               {
                 return (
                   <GameCardComponent
                     key={"game" + game._id + index}
