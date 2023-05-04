@@ -157,10 +157,79 @@ const GameStorePage = () => {
   return (
     <Fragment>
       <h1>welcome to our store</h1>
-      <img
-        src="../../../images/controller-storepage.jpg"
-        style={{ aspectRatio: "4 / 1", objectFit: "cover" }}
-      />
+      <div
+        id="carouselExampleFade"
+        className="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img
+            src="../../../images/cod2.jpg"
+              className="d-block w-100"
+              alt="img1"
+              style={{ aspectRatio: "6 / 2", objectFit: "cover" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+            src="../../../images/minecraft2.jpg"
+          
+              className="d-block w-100"
+              alt="img2"
+              style={{ aspectRatio: "6 / 2", objectFit: "cover" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="../../../images/fortnite.jpg"
+              className="d-block w-100"
+              alt="img3"
+              style={{ aspectRatio: "6 / 2", objectFit: "cover" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="../../../images/lol.jpg"
+              className="d-block w-100"
+              alt="img3"
+              style={{ aspectRatio: "6 / 2", objectFit: "cover" }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+             src="../../../images/counter-strike.png"
+              className="d-block w-100"
+              alt="img3"
+              style={{ aspectRatio: "6 / 2", objectFit: "cover" }}
+            />
+          </div>
+        </div>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
       <div className="row align-items-center">
         <div className="col-sm-4">
           <p className="p2">search by name :</p>
