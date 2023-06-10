@@ -35,7 +35,7 @@ const Footer = () => {
           <p> Copyright© 2023. Tal Poris All Rights Reserved </p>
 
           <span>
-            To get in touch, you can send an email to the address -
+            To get in touch, you can send an email to -
             talpor212@gmail.com
           </span>
         </div>
